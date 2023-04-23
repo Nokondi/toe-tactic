@@ -1,18 +1,13 @@
 import { StyleSheet, View, Pressable, Text } from "react-native";
-import { useState } from 'react';
 
-export default function Square() {
-
-    const [value, setValue] = useState(null);
-
-    const onSquarePress = () => {
-        setValue('X');
-    }
+export default function Square({value, onSquarePress}) {
 
     return (
         <View style={styles.square}>
-            <Pressable className="Square" onPress={onSquarePress}>
-                {value}
+            <Pressable style={styles.button} onPress={onSquarePress}>
+                <Text style={styles.buttonText}>
+                    {value}
+                </Text>
             </Pressable>
         </View>
         
@@ -22,11 +17,27 @@ export default function Square() {
   const styles = StyleSheet.create({
     square: {
         backgroundColor: "#fff",
+        borderWidth: 2,
         borderColor: "#999",
-        textAlign: "center",
-        flex: 1,
-        width: "33%",
-        height: "100%",
-        alignItems: "center",
+        borderStyle: "solid",
+        color: "#000",
+        alignItems: 'center',
+        justifyContent: 'center',
+        width: 100,
+        height: 100,
+    },
+    button: {
+        width: '100%',
+        height: '100%',
+        alignItems: 'center',
+        justifyContent: 'center',
+    },
+    buttonText: {
+        textAlign: 'center',
+        alignItems: 'center',
+        justifyContent: 'center',
+        fontWeight: 'bold',
+        fontSize: 72,
+        fontFamily: 'sans-serif',
     },
   });
