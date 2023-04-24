@@ -4,7 +4,7 @@ export default function WinBox({ isVisible, winner }) {
 return (
     <Modal animationType="fade" transparent={true} visible={isVisible}>
         <View style={styles.modalContent}>
-            <Text style={styles.title}>{winner} WINS!</Text>
+            <Text style={styles.winText}>{winner} WINS!</Text>
         </View>
     </Modal>
 );
@@ -19,9 +19,10 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         margin: 'auto',
     },
-    title: {
+    winText: {
         color: '#fff',
-        fontSize: 16,
+        fontSize: 32,
+        fontFamily: 'sans-serif',
     },
 });
   
