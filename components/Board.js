@@ -1,11 +1,14 @@
-import { StyleSheet, View, Text } from "react-native";
+import { Pressable, StyleSheet, View } from "react-native";
 import { useState } from 'react';
 
 import Square from "./Square";
+import WinBox from "./WinBox";
 
 export default function Board() {
     const [xIsNext, setXIsNext] = useState(true);
     const [squares, setSquares] = useState(Array(9).fill(null));
+    const [gameOver, setGameOver] = useState(false);
+    const [winner, setWinner] = useState(null);
 
     const calculateWinner = (squares) => {
         const lines = [
@@ -22,6 +25,8 @@ export default function Board() {
         for (let i = 0; i < lines.length; i++) {
             const [a, b, c] = lines[i];
             if (squares[a] && squares[a] === squares[b] && squares[a] === squares[c]) {
+                setGameOver(true);
+                setWinner(squares[a]);
                 return squares[a];
             }
         }
@@ -43,6 +48,12 @@ export default function Board() {
         }
         setSquares(tmpSquares);
         setXIsNext(!xIsNext);
+    }
+
+    const resetGame = () => {
+        setSquares(Array(9).fill(null));
+        setGameOver(false);
+        setXIsNext(true);
     }
 
     return (
@@ -80,6 +91,9 @@ export default function Board() {
                     value={squares[8]}
                     onSquarePress={() => updateSquareValue(8)} />
             </View>
+            <Pressable onPress={resetGame}>
+                <WinBox isVisible={gameOver} winner={winner} />
+            </Pressable>
         </View>
     );
 }
@@ -96,5 +110,11 @@ const styles = StyleSheet.create({
     boardRow: {
         alignItems: 'center',
         flexDirection: 'row',
+    },
+    modalBox: {
+        width: 100,
+        height: 100,
+        alignItems: 'center',
+        justifyContent: 'center',
     },
 });
