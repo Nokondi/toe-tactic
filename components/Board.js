@@ -10,6 +10,11 @@ export default function Board() {
     const [gameOver, setGameOver] = useState(false);
     const [winner, setWinner] = useState(null);
 
+    const calculateMove = (squares) => {
+        // Calculate each fighters' possible moves based on pattern of Xs
+        // and Os after the final square is filled
+    }
+
     const calculateWinner = (squares) => {
         const lines = [
             [0, 1, 2],
