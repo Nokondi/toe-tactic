@@ -16,9 +16,8 @@ export default function Square({value, onSquarePress}) {
 
   const styles = StyleSheet.create({
     square: {
-        backgroundColor: "#fff",
         borderWidth: 2,
-        borderColor: "#999",
+        borderColor: "#38686A",
         borderStyle: "solid",
         color: "#000",
         alignItems: 'center',
@@ -39,5 +38,6 @@ export default function Square({value, onSquarePress}) {
         fontWeight: 'bold',
         fontSize: 72,
         fontFamily: 'sans-serif',
+        color: "#187795",
     },
   });
